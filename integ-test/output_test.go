@@ -21,6 +21,8 @@ func TestSunnyDayOutput(t *testing.T) {
 	tests := []testData{
 		{"1", "+", "1", "1 + 1 = 2.000000\n", false},
 		{"2.5", "/", "2", "2.5 / 2 = 1.250000\n", false},
+		{"2.5", "-", "2", "2.5 - 2 = 0.500000\n", false},
+		{"2.5", "*", "2", "2.5 * 2 = 5.000000\n", false},
 	}
 	runTestCalculator(t, tests)
 }
@@ -29,6 +31,7 @@ func TestErrorOutput(t *testing.T) {
 	tests := []testData{
 		{"1", "ab", "3", "invalid operator\n", true},
 		{"1", "+", "x", "invalid operand\n", true},
+		{"1", "/", "0", "division by zero is not allowed\n", true},
 	}
 	runTestCalculator(t, tests)
 
